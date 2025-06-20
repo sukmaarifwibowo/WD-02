@@ -16,17 +16,17 @@ class JanjiPeriksa extends Model
         'no_antrian',
     ];
 
-    public function pasien():BelongsTo
+    public function pasien()
     {
         return $this->belongsTo(User::class, 'id_pasien');
     }
 
-    public function jadwalPeriksa():BelongsTo
+    public function jadwalPeriksa()
     {
         return $this->belongsTo(JadwalPeriksa::class, 'id_jadwal_periksa');
     }
 
-    public function periksa():HasOne
+    public function periksa()
     {
         return $this->hasOne(Periksa::class, 'id_janji_periksa');
     }

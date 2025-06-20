@@ -2,24 +2,29 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DetailPeriksa extends Model
 {
     use HasFactory;
 
+
+    protected $table = 'detail_periksa';
+
     protected $fillable = [
         'id_periksa',
-        'id_obat',
+        'id_tindakan',
+        'harga',
     ];
 
-    public function periksa():BelongsTo
+    public function tindakan()
     {
-        return $this->belongsTo(Periksa::class, 'id_periksa');
+        return $this->belongsTo(Tindakan::class, 'id_tindakan');
     }
 
-    public function obat():BelongsTo
+    public function periksa()
     {
-        return $this->belongsTo(Obat::class, 'id_obat');
+        return $this->belongsTo(Periksa::class, 'id_periksa');
     }
 }

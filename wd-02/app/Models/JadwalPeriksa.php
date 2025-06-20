@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class JadwalPeriksa extends Model
 {
@@ -17,12 +18,12 @@ class JadwalPeriksa extends Model
         'status'
     ];
 
-    public function dokter() :BelongsTo
+    public function dokter()
     {
         return $this->belongsTo(User::class, 'id_dokter');
     }
 
-    public function janjiPeriksas() :HasMany
+    public function janjiPeriksas()
     {
         return $this->hasMany(JanjiPeriksa::class, 'id_jadwal_periksa');
     }
